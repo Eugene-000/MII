@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MilitaryAirfieldModelContainer" CdmEntityContainer="MilitaryAirfieldEntities4">
+    <EntitySetMapping Name="LoginModel">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.LoginModel">
+        <MappingFragment StoreEntitySet="LoginModel">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegisterModel">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.RegisterModel">
+        <MappingFragment StoreEntitySet="RegisterModel">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RolePlace" ColumnName="RolePlace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Воздушное_судно">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Воздушное_судно">
+        <MappingFragment StoreEntitySet="Воздушное судно">
+          <ScalarProperty Name="ID_Воздушного_судна" ColumnName="ID Воздушного судна" />
+          <ScalarProperty Name="Регистрационный_номер_судна" ColumnName="Регистрационный номер судна" />
+          <ScalarProperty Name="Тип_воздушного_судна" ColumnName="Тип воздушного судна" />
+          <ScalarProperty Name="Название_воздушного_судна" ColumnName="Название воздушного судна" />
+          <ScalarProperty Name="Год_создания" ColumnName="Год создания" />
+          <ScalarProperty Name="Год_начала_эксплуатации" ColumnName="Год начала эксплуатации" />
+          <ScalarProperty Name="Работоспособность" ColumnName="Работоспособность" />
+          <ScalarProperty Name="Грузоподъемность_в_кг_" ColumnName="Грузоподъемность(в кг)" />
+          <ScalarProperty Name="Максимальная_скорость_в_км_ч_" ColumnName="Максимальная скорость(в км\ч)" />
+          <ScalarProperty Name="Длина_в_м_" ColumnName="Длина(в м)" />
+          <ScalarProperty Name="Мощность_или_тяга_двигателя" ColumnName="Мощность или тяга двигателя" />
+          <ScalarProperty Name="Дальность_полёта_в_км_" ColumnName="Дальность полёта(в км)" />
+          <ScalarProperty Name="ID_навигационной_системы" ColumnName="ID навигационной системы" />
+          <ScalarProperty Name="ID_топливной_системы" ColumnName="ID топливной системы" />
+          <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+          <ScalarProperty Name="ID_узлов_маневрирования" ColumnName="ID узлов маневрирования" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Вооружение">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Вооружение">
+        <MappingFragment StoreEntitySet="Вооружение">
+          <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+          <ScalarProperty Name="Используемые_ракеты" ColumnName="Используемые ракеты" />
+          <ScalarProperty Name="Боевая_нагрузка_в_кг_" ColumnName="Боевая нагрузка(в кг)" />
+          <ScalarProperty Name="Количество_точек_подвески" ColumnName="Количество точек подвески" />
+          <ScalarProperty Name="Наличие_бомб" ColumnName="Наличие бомб" />
+          <ScalarProperty Name="Стрелково_пушечное_вооружение" ColumnName="Стрелково-пушечное вооружение" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Используемая_экипировка">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Используемая_экипировка">
+        <MappingFragment StoreEntitySet="Используемая экипировка">
+          <ScalarProperty Name="ID_экипировки" ColumnName="ID экипировки" />
+          <ScalarProperty Name="ID_Сотрудника" ColumnName="ID Сотрудника" />
+          <ScalarProperty Name="Защитный_костюм" ColumnName="Защитный костюм" />
+          <ScalarProperty Name="Наличие_авиационного_спасательного_пояса" ColumnName="Наличие авиационного спасательного пояса" />
+          <ScalarProperty Name="Наплечные_знаки_различия_или_погоны" ColumnName="Наплечные знаки различия или погоны" />
+          <ScalarProperty Name="Тип_экипировки" ColumnName="Тип экипировки" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Навигационная_система">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Навигационная_система">
+        <MappingFragment StoreEntitySet="Навигационная система">
+          <ScalarProperty Name="ID_навигационной_системы" ColumnName="ID навигационной системы" />
+          <ScalarProperty Name="Средняя_дальность_обнаружения_воздушной_цели" ColumnName="Средняя дальность обнаружения воздушной цели" />
+          <ScalarProperty Name="Количество_одновременно_сопровождаемых_целей" ColumnName="Количество одновременно сопровождаемых целей" />
+          <ScalarProperty Name="Количество_одновременно_атакуемых_целей" ColumnName="Количество одновременно атакуемых целей" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Полеты">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Полеты">
+        <MappingFragment StoreEntitySet="Полеты">
+          <ScalarProperty Name="Номер_рейса" ColumnName="Номер рейса" />
+          <ScalarProperty Name="Место_вылета" ColumnName="Место вылета" />
+          <ScalarProperty Name="Дата_и_время_вылета" ColumnName="Дата и время вылета" />
+          <ScalarProperty Name="Место_прибытия" ColumnName="Место прибытия" />
+          <ScalarProperty Name="Дата_и_время_прилета" ColumnName="Дата и время прилета" />
+          <ScalarProperty Name="Номер_взлетной_полосы" ColumnName="Номер взлетной полосы" />
+          <ScalarProperty Name="Расстояние_в_км_" ColumnName="Расстояние(в км)" />
+          <ScalarProperty Name="ID_Воздушного_судна" ColumnName="ID Воздушного судна" />
+          <ScalarProperty Name="Боевой_полет" ColumnName="Боевой полет" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудник_аэродрома">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Сотрудник_аэродрома">
+        <MappingFragment StoreEntitySet="Сотрудник аэродрома">
+          <ScalarProperty Name="ID_Сотрудника" ColumnName="ID Сотрудника" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Военное_звание" ColumnName="Военное звание" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Место_работы" ColumnName="Место работы" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудник_Воздушное_судно">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Сотрудник_Воздушное_судно">
+        <MappingFragment StoreEntitySet="Сотрудник_Воздушное судно">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Сотрудника" ColumnName="ID Сотрудника" />
+          <ScalarProperty Name="ID_Воздушного_судна" ColumnName="ID Воздушного судна" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Топливная_система">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Топливная_система">
+        <MappingFragment StoreEntitySet="Топливная система">
+          <ScalarProperty Name="ID_топливной_системы" ColumnName="ID топливной системы" />
+          <ScalarProperty Name="Масса_топлива_в_кг_" ColumnName="Масса топлива(в кг)" />
+          <ScalarProperty Name="Вид_топлива" ColumnName="Вид топлива" />
+          <ScalarProperty Name="Способ_заправки" ColumnName="Способ заправки" />
+          <ScalarProperty Name="Количество_баков" ColumnName="Количество баков" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Узлы_маневрирования">
+      <EntityTypeMapping TypeName="MilitaryAirfieldModel.Узлы_маневрирования">
+        <MappingFragment StoreEntitySet="Узлы маневрирования">
+          <ScalarProperty Name="ID_узлов_маневрирования" ColumnName="ID узлов маневрирования" />
+          <ScalarProperty Name="Размах_крыла_в_м_" ColumnName="Размах крыла(в м)" />
+          <ScalarProperty Name="Наличие_закрылок" ColumnName="Наличие закрылок" />
+          <ScalarProperty Name="Угол_стреловидности" ColumnName="Угол стреловидности" />
+          <ScalarProperty Name="Скороподъемность_в_м_с_" ColumnName="Скороподъемность(в м\с)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="Хранилище MilitaryAirfieldModel.nagruzka" FunctionImportName="nagruzka">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MilitaryAirfieldModel.nagruzka_Result">
+          <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+          <ScalarProperty Name="Используемые_ракеты" ColumnName="Используемые ракеты" />
+          <ScalarProperty Name="Боевая_нагрузка_в_кг_" ColumnName="Боевая нагрузка(в кг)" />
+          <ScalarProperty Name="Количество_точек_подвески" ColumnName="Количество точек подвески" />
+          <ScalarProperty Name="Наличие_бомб" ColumnName="Наличие бомб" />
+          <ScalarProperty Name="Стрелково_пушечное_вооружение" ColumnName="Стрелково-пушечное вооружение" />
+          <ScalarProperty Name="Общая_боевая_нагрузка" ColumnName="Общая боевая нагрузка" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="Хранилище MilitaryAirfieldModel.strelok" FunctionImportName="strelok">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MilitaryAirfieldModel.strelok_Result">
+          <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+          <ScalarProperty Name="Используемые_ракеты" ColumnName="Используемые ракеты" />
+          <ScalarProperty Name="Боевая_нагрузка_в_кг_" ColumnName="Боевая нагрузка(в кг)" />
+          <ScalarProperty Name="Количество_точек_подвески" ColumnName="Количество точек подвески" />
+          <ScalarProperty Name="Наличие_бомб" ColumnName="Наличие бомб" />
+          <ScalarProperty Name="Стрелково_пушечное_вооружение" ColumnName="Стрелково-пушечное вооружение" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="dobavlenie" FunctionName="Хранилище MilitaryAirfieldModel.dobavlenie" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MilitaryAirfieldModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MilitaryAirfieldModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MilitaryAirfieldModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MilitaryAirfieldModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MilitaryAirfieldModel.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="udalenie" FunctionName="Хранилище MilitaryAirfieldModel.udalenie" />
+  </EntityContainerMapping>
+</Mapping>

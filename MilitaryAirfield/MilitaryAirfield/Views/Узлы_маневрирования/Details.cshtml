@@ -1,0 +1,55 @@
+﻿@model MilitaryAirfield.Models.Узлы_маневрирования
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ"
+                                     && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Работник ангара")
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+<h2>Подробнее:</h2>
+
+<div>
+    <h4>Узлы маневрирования</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Размах_крыла_в_м_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Размах_крыла_в_м_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_закрылок)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_закрылок)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Угол_стреловидности)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Угол_стреловидности)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Скороподъемность_в_м_с_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Скороподъемность_в_м_с_)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID_узлов_маневрирования }) |
+    @Html.ActionLink("Вернуться назад", "Index")
+</p>

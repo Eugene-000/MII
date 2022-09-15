@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище MilitaryAirfieldModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoginModel">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterModel">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlaceOfWork" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="PlaceOfWork" />
+          </Key>
+          <Property Name="PlaceOfWork" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RolePlace" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Воздушное судно">
+          <Key>
+            <PropertyRef Name="ID Воздушного судна" />
+          </Key>
+          <Property Name="ID Воздушного судна" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Регистрационный номер судна" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Тип воздушного судна" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Название воздушного судна" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Год создания" Type="int" Nullable="false" />
+          <Property Name="Год начала эксплуатации" Type="int" Nullable="false" />
+          <Property Name="Работоспособность" Type="bit" Nullable="false" />
+          <Property Name="Грузоподъемность(в кг)" Type="int" Nullable="false" />
+          <Property Name="Максимальная скорость(в км\ч)" Type="int" Nullable="false" />
+          <Property Name="Длина(в м)" Type="int" Nullable="false" />
+          <Property Name="Мощность или тяга двигателя" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Дальность полёта(в км)" Type="int" Nullable="false" />
+          <Property Name="ID навигационной системы" Type="int" Nullable="false" />
+          <Property Name="ID топливной системы" Type="int" Nullable="false" />
+          <Property Name="ID вооружения судна" Type="int" Nullable="false" />
+          <Property Name="ID узлов маневрирования" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Вооружение">
+          <Key>
+            <PropertyRef Name="ID вооружения судна" />
+          </Key>
+          <Property Name="ID вооружения судна" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Используемые ракеты" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Боевая нагрузка(в кг)" Type="int" Nullable="false" />
+          <Property Name="Количество точек подвески" Type="int" Nullable="false" />
+          <Property Name="Наличие бомб" Type="bit" Nullable="false" />
+          <Property Name="Стрелково-пушечное вооружение" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Используемая экипировка">
+          <Key>
+            <PropertyRef Name="ID экипировки" />
+          </Key>
+          <Property Name="ID экипировки" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID Сотрудника" Type="int" Nullable="false" />
+          <Property Name="Защитный костюм" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Наличие авиационного спасательного пояса" Type="bit" Nullable="false" />
+          <Property Name="Наплечные знаки различия или погоны" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Тип экипировки" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Навигационная система">
+          <Key>
+            <PropertyRef Name="ID навигационной системы" />
+          </Key>
+          <Property Name="ID навигационной системы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Средняя дальность обнаружения воздушной цели" Type="int" Nullable="false" />
+          <Property Name="Количество одновременно сопровождаемых целей" Type="int" Nullable="false" />
+          <Property Name="Количество одновременно атакуемых целей" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Полеты">
+          <Key>
+            <PropertyRef Name="Номер рейса" />
+          </Key>
+          <Property Name="Номер рейса" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Место вылета" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Дата и время вылета" Type="datetime" Nullable="false" />
+          <Property Name="Место прибытия" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Дата и время прилета" Type="datetime" Nullable="false" />
+          <Property Name="Номер взлетной полосы" Type="int" Nullable="false" />
+          <Property Name="Расстояние(в км)" Type="int" Nullable="false" />
+          <Property Name="ID Воздушного судна" Type="int" Nullable="false" />
+          <Property Name="Боевой полет" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сотрудник аэродрома">
+          <Key>
+            <PropertyRef Name="ID Сотрудника" />
+          </Key>
+          <Property Name="ID Сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Пол" Type="bit" Nullable="false" />
+          <Property Name="Дата рождения" Type="datetime" Nullable="false" />
+          <Property Name="Телефон" Type="bigint" Nullable="false" />
+          <Property Name="Военное звание" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Должность" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Место работы" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сотрудник_Воздушное судно">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID Сотрудника" Type="int" Nullable="false" />
+          <Property Name="ID Воздушного судна" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Топливная система">
+          <Key>
+            <PropertyRef Name="ID топливной системы" />
+          </Key>
+          <Property Name="ID топливной системы" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Масса топлива(в кг)" Type="int" Nullable="false" />
+          <Property Name="Вид топлива" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Способ заправки" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Количество баков" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Узлы маневрирования">
+          <Key>
+            <PropertyRef Name="ID узлов маневрирования" />
+          </Key>
+          <Property Name="ID узлов маневрирования" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Размах крыла(в м)" Type="int" Nullable="false" />
+          <Property Name="Наличие закрылок" Type="bit" Nullable="false" />
+          <Property Name="Угол стреловидности" Type="int" />
+          <Property Name="Скороподъемность(в м\с)" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="PlaceOfWork" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RolePlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудник_Воздушное судно_Воздушное судно">
+          <End Role="Воздушное судно" Type="Self.Воздушное судно" Multiplicity="1" />
+          <End Role="Сотрудник_Воздушное судно" Type="Self.Сотрудник_Воздушное судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Воздушное судно">
+              <PropertyRef Name="ID Воздушного судна" />
+            </Principal>
+            <Dependent Role="Сотрудник_Воздушное судно">
+              <PropertyRef Name="ID Воздушного судна" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудник_Воздушное судно_Сотрудник аэродрома">
+          <End Role="Сотрудник аэродрома" Type="Self.Сотрудник аэродрома" Multiplicity="1" />
+          <End Role="Сотрудник_Воздушное судно" Type="Self.Сотрудник_Воздушное судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник аэродрома">
+              <PropertyRef Name="ID Сотрудника" />
+            </Principal>
+            <Dependent Role="Сотрудник_Воздушное судно">
+              <PropertyRef Name="ID Сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Экипировка_Сотрудник аэродрома">
+          <End Role="Сотрудник аэродрома" Type="Self.Сотрудник аэродрома" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Используемая экипировка" Type="Self.Используемая экипировка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник аэродрома">
+              <PropertyRef Name="ID Сотрудника" />
+            </Principal>
+            <Dependent Role="Используемая экипировка">
+              <PropertyRef Name="ID Сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное судно_Вооружение_FK_Rule">
+          <End Role="Вооружение" Type="Self.Вооружение" Multiplicity="1" />
+          <End Role="Воздушное судно" Type="Self.Воздушное судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Вооружение">
+              <PropertyRef Name="ID вооружения судна" />
+            </Principal>
+            <Dependent Role="Воздушное судно">
+              <PropertyRef Name="ID вооружения судна" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное судно_Навигационная система_FK_Rule">
+          <End Role="Навигационная система" Type="Self.Навигационная система" Multiplicity="1" />
+          <End Role="Воздушное судно" Type="Self.Воздушное судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Навигационная система">
+              <PropertyRef Name="ID навигационной системы" />
+            </Principal>
+            <Dependent Role="Воздушное судно">
+              <PropertyRef Name="ID навигационной системы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное судно_Топливная система_FK_Rule">
+          <End Role="Топливная система" Type="Self.Топливная система" Multiplicity="1" />
+          <End Role="Воздушное судно" Type="Self.Воздушное судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Топливная система">
+              <PropertyRef Name="ID топливной системы" />
+            </Principal>
+            <Dependent Role="Воздушное судно">
+              <PropertyRef Name="ID топливной системы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное судно_Узлы маневрирования_FK_Rule">
+          <End Role="Узлы маневрирования" Type="Self.Узлы маневрирования" Multiplicity="1" />
+          <End Role="Воздушное судно" Type="Self.Воздушное судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Узлы маневрирования">
+              <PropertyRef Name="ID узлов маневрирования" />
+            </Principal>
+            <Dependent Role="Воздушное судно">
+              <PropertyRef Name="ID узлов маневрирования" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Полеты_Воздушное судно_FK_Rule">
+          <End Role="Воздушное судно" Type="Self.Воздушное судно" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Полеты" Type="Self.Полеты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Воздушное судно">
+              <PropertyRef Name="ID Воздушного судна" />
+            </Principal>
+            <Dependent Role="Полеты">
+              <PropertyRef Name="ID Воздушного судна" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="boevaya_nagruzka" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="tip" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="dobavlenie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="kol_vo" Type="int" Mode="In" />
+          <Parameter Name="mesto_pribitiya" Type="nvarchar" Mode="In" />
+          <Parameter Name="mesto_vileta" Type="nvarchar" Mode="In" />
+          <Parameter Name="time_vileta" Type="datetime" Mode="In" />
+          <Parameter Name="boevoj_vilet" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="kolvo_samoletov" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="tip" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="massa_topliva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="id_sistemi" Type="int" Mode="In" />
+        </Function>
+        <Function Name="nagruzka" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID вооружения судна" Type="int" Nullable="false" />
+                <Property Name="Используемые ракеты" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Боевая нагрузка(в кг)" Type="int" Nullable="false" />
+                <Property Name="Количество точек подвески" Type="int" Nullable="false" />
+                <Property Name="Наличие бомб" Type="bit" Nullable="false" />
+                <Property Name="Стрелково-пушечное вооружение" Type="nvarchar" MaxLength="40" Nullable="false" />
+                <Property Name="Общая боевая нагрузка" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="strelok" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="ID вооружения судна" Type="int" Nullable="false" />
+                <Property Name="Используемые ракеты" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Боевая нагрузка(в кг)" Type="int" Nullable="false" />
+                <Property Name="Количество точек подвески" Type="int" Nullable="false" />
+                <Property Name="Наличие бомб" Type="bit" Nullable="false" />
+                <Property Name="Стрелково-пушечное вооружение" Type="nvarchar" MaxLength="40" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="udalenie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="vremya_poleta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="nomer_reysa" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище MilitaryAirfieldModelContainer">
+          <EntitySet Name="LoginModel" EntityType="Self.LoginModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterModel" EntityType="Self.RegisterModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Воздушное судно" EntityType="Self.Воздушное судно" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Вооружение" EntityType="Self.Вооружение" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Используемая экипировка" EntityType="Self.Используемая экипировка" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Навигационная система" EntityType="Self.Навигационная система" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Полеты" EntityType="Self.Полеты" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудник аэродрома" EntityType="Self.Сотрудник аэродрома" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудник_Воздушное судно" EntityType="Self.Сотрудник_Воздушное судно" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Топливная система" EntityType="Self.Топливная система" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Узлы маневрирования" EntityType="Self.Узлы маневрирования" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Воздушное судно_Воздушное судно" Association="Self.FK_Сотрудник_Воздушное судно_Воздушное судно">
+            <End Role="Воздушное судно" EntitySet="Воздушное судно" />
+            <End Role="Сотрудник_Воздушное судно" EntitySet="Сотрудник_Воздушное судно" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Воздушное судно_Сотрудник аэродрома" Association="Self.FK_Сотрудник_Воздушное судно_Сотрудник аэродрома">
+            <End Role="Сотрудник аэродрома" EntitySet="Сотрудник аэродрома" />
+            <End Role="Сотрудник_Воздушное судно" EntitySet="Сотрудник_Воздушное судно" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Экипировка_Сотрудник аэродрома" Association="Self.FK_Экипировка_Сотрудник аэродрома">
+            <End Role="Сотрудник аэродрома" EntitySet="Сотрудник аэродрома" />
+            <End Role="Используемая экипировка" EntitySet="Используемая экипировка" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное судно_Вооружение_FK_Rule" Association="Self.Воздушное судно_Вооружение_FK_Rule">
+            <End Role="Вооружение" EntitySet="Вооружение" />
+            <End Role="Воздушное судно" EntitySet="Воздушное судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное судно_Навигационная система_FK_Rule" Association="Self.Воздушное судно_Навигационная система_FK_Rule">
+            <End Role="Навигационная система" EntitySet="Навигационная система" />
+            <End Role="Воздушное судно" EntitySet="Воздушное судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное судно_Топливная система_FK_Rule" Association="Self.Воздушное судно_Топливная система_FK_Rule">
+            <End Role="Топливная система" EntitySet="Топливная система" />
+            <End Role="Воздушное судно" EntitySet="Воздушное судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное судно_Узлы маневрирования_FK_Rule" Association="Self.Воздушное судно_Узлы маневрирования_FK_Rule">
+            <End Role="Узлы маневрирования" EntitySet="Узлы маневрирования" />
+            <End Role="Воздушное судно" EntitySet="Воздушное судно" />
+          </AssociationSet>
+          <AssociationSet Name="Полеты_Воздушное судно_FK_Rule" Association="Self.Полеты_Воздушное судно_FK_Rule">
+            <End Role="Воздушное судно" EntitySet="Воздушное судно" />
+            <End Role="Полеты" EntitySet="Полеты" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MilitaryAirfieldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="nagruzka_Result">
+          <Property Name="ID_вооружения_судна" Type="Int32" Nullable="false" />
+          <Property Name="Используемые_ракеты" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Боевая_нагрузка_в_кг_" Type="Int32" Nullable="false" />
+          <Property Name="Количество_точек_подвески" Type="Int32" Nullable="false" />
+          <Property Name="Наличие_бомб" Type="Boolean" Nullable="false" />
+          <Property Name="Стрелково_пушечное_вооружение" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Общая_боевая_нагрузка" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="strelok_Result">
+          <Property Name="ID_вооружения_судна" Type="Int32" Nullable="false" />
+          <Property Name="Используемые_ракеты" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Боевая_нагрузка_в_кг_" Type="Int32" Nullable="false" />
+          <Property Name="Количество_точек_подвески" Type="Int32" Nullable="false" />
+          <Property Name="Наличие_бомб" Type="Boolean" Nullable="false" />
+          <Property Name="Стрелково_пушечное_вооружение" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="LoginModel">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterModel">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlaceOfWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="PlaceOfWork" />
+          </Key>
+          <Property Name="PlaceOfWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RolePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Воздушное_судно">
+          <Key>
+            <PropertyRef Name="ID_Воздушного_судна" />
+          </Key>
+          <Property Name="ID_Воздушного_судна" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Регистрационный_номер_судна" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип_воздушного_судна" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Название_воздушного_судна" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Год_создания" Type="Int32" Nullable="false" />
+          <Property Name="Год_начала_эксплуатации" Type="Int32" Nullable="false" />
+          <Property Name="Работоспособность" Type="Boolean" Nullable="false" />
+          <Property Name="Грузоподъемность_в_кг_" Type="Int32" Nullable="false" />
+          <Property Name="Максимальная_скорость_в_км_ч_" Type="Int32" Nullable="false" />
+          <Property Name="Длина_в_м_" Type="Int32" Nullable="false" />
+          <Property Name="Мощность_или_тяга_двигателя" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дальность_полёта_в_км_" Type="Int32" Nullable="false" />
+          <Property Name="ID_навигационной_системы" Type="Int32" Nullable="false" />
+          <Property Name="ID_топливной_системы" Type="Int32" Nullable="false" />
+          <Property Name="ID_вооружения_судна" Type="Int32" Nullable="false" />
+          <Property Name="ID_узлов_маневрирования" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Сотрудник_Воздушное_судно" Relationship="Self.FK_Сотрудник_Воздушное_судно_Воздушное_судно" FromRole="Воздушное_судно" ToRole="Сотрудник_Воздушное_судно" />
+          <NavigationProperty Name="Вооружение" Relationship="Self.Воздушное_судно_Вооружение_FK_Rule" FromRole="Воздушное_судно" ToRole="Вооружение" />
+          <NavigationProperty Name="Навигационная_система" Relationship="Self.Воздушное_судно_Навигационная_система_FK_Rule" FromRole="Воздушное_судно" ToRole="Навигационная_система" />
+          <NavigationProperty Name="Топливная_система" Relationship="Self.Воздушное_судно_Топливная_система_FK_Rule" FromRole="Воздушное_судно" ToRole="Топливная_система" />
+          <NavigationProperty Name="Узлы_маневрирования" Relationship="Self.Воздушное_судно_Узлы_маневрирования_FK_Rule" FromRole="Воздушное_судно" ToRole="Узлы_маневрирования" />
+          <NavigationProperty Name="Полеты" Relationship="Self.Полеты_Воздушное_судно_FK_Rule" FromRole="Воздушное_судно" ToRole="Полеты" />
+        </EntityType>
+        <EntityType Name="Вооружение">
+          <Key>
+            <PropertyRef Name="ID_вооружения_судна" />
+          </Key>
+          <Property Name="ID_вооружения_судна" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Используемые_ракеты" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Боевая_нагрузка_в_кг_" Type="Int32" Nullable="false" />
+          <Property Name="Количество_точек_подвески" Type="Int32" Nullable="false" />
+          <Property Name="Наличие_бомб" Type="Boolean" Nullable="false" />
+          <Property Name="Стрелково_пушечное_вооружение" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Воздушное_судно" Relationship="Self.Воздушное_судно_Вооружение_FK_Rule" FromRole="Вооружение" ToRole="Воздушное_судно" />
+        </EntityType>
+        <EntityType Name="Используемая_экипировка">
+          <Key>
+            <PropertyRef Name="ID_экипировки" />
+          </Key>
+          <Property Name="ID_экипировки" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Сотрудника" Type="Int32" Nullable="false" />
+          <Property Name="Защитный_костюм" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Наличие_авиационного_спасательного_пояса" Type="Boolean" Nullable="false" />
+          <Property Name="Наплечные_знаки_различия_или_погоны" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Тип_экипировки" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Сотрудник_аэродрома" Relationship="Self.FK_Экипировка_Сотрудник_аэродрома" FromRole="Используемая_экипировка" ToRole="Сотрудник_аэродрома" />
+        </EntityType>
+        <EntityType Name="Навигационная_система">
+          <Key>
+            <PropertyRef Name="ID_навигационной_системы" />
+          </Key>
+          <Property Name="ID_навигационной_системы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Средняя_дальность_обнаружения_воздушной_цели" Type="Int32" Nullable="false" />
+          <Property Name="Количество_одновременно_сопровождаемых_целей" Type="Int32" Nullable="false" />
+          <Property Name="Количество_одновременно_атакуемых_целей" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Воздушное_судно" Relationship="Self.Воздушное_судно_Навигационная_система_FK_Rule" FromRole="Навигационная_система" ToRole="Воздушное_судно" />
+        </EntityType>
+        <EntityType Name="Полеты">
+          <Key>
+            <PropertyRef Name="Номер_рейса" />
+          </Key>
+          <Property Name="Номер_рейса" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Место_вылета" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_и_время_вылета" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Место_прибытия" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Дата_и_время_прилета" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Номер_взлетной_полосы" Type="Int32" Nullable="false" />
+          <Property Name="Расстояние_в_км_" Type="Int32" Nullable="false" />
+          <Property Name="ID_Воздушного_судна" Type="Int32" Nullable="false" />
+          <Property Name="Боевой_полет" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Воздушное_судно" Relationship="Self.Полеты_Воздушное_судно_FK_Rule" FromRole="Полеты" ToRole="Воздушное_судно" />
+        </EntityType>
+        <EntityType Name="Сотрудник_аэродрома">
+          <Key>
+            <PropertyRef Name="ID_Сотрудника" />
+          </Key>
+          <Property Name="ID_Сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Пол" Type="Boolean" Nullable="false" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Телефон" Type="Int64" Nullable="false" />
+          <Property Name="Военное_звание" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Должность" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Место_работы" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Используемая_экипировка" Relationship="Self.FK_Экипировка_Сотрудник_аэродрома" FromRole="Сотрудник_аэродрома" ToRole="Используемая_экипировка" />
+          <NavigationProperty Name="Сотрудник_Воздушное_судно" Relationship="Self.FK_Сотрудник_Воздушное_судно_Сотрудник_аэродрома" FromRole="Сотрудник_аэродрома" ToRole="Сотрудник_Воздушное_судно" />
+        </EntityType>
+        <EntityType Name="Сотрудник_Воздушное_судно">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Сотрудника" Type="Int32" Nullable="false" />
+          <Property Name="ID_Воздушного_судна" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Воздушное_судно" Relationship="Self.FK_Сотрудник_Воздушное_судно_Воздушное_судно" FromRole="Сотрудник_Воздушное_судно" ToRole="Воздушное_судно" />
+          <NavigationProperty Name="Сотрудник_аэродрома" Relationship="Self.FK_Сотрудник_Воздушное_судно_Сотрудник_аэродрома" FromRole="Сотрудник_Воздушное_судно" ToRole="Сотрудник_аэродрома" />
+        </EntityType>
+        <EntityType Name="Топливная_система">
+          <Key>
+            <PropertyRef Name="ID_топливной_системы" />
+          </Key>
+          <Property Name="ID_топливной_системы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Масса_топлива_в_кг_" Type="Int32" Nullable="false" />
+          <Property Name="Вид_топлива" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Способ_заправки" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Количество_баков" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Воздушное_судно" Relationship="Self.Воздушное_судно_Топливная_система_FK_Rule" FromRole="Топливная_система" ToRole="Воздушное_судно" />
+        </EntityType>
+        <EntityType Name="Узлы_маневрирования">
+          <Key>
+            <PropertyRef Name="ID_узлов_маневрирования" />
+          </Key>
+          <Property Name="ID_узлов_маневрирования" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Размах_крыла_в_м_" Type="Int32" Nullable="false" />
+          <Property Name="Наличие_закрылок" Type="Boolean" Nullable="false" />
+          <Property Name="Угол_стреловидности" Type="Int32" />
+          <Property Name="Скороподъемность_в_м_с_" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Воздушное_судно" Relationship="Self.Воздушное_судно_Узлы_маневрирования_FK_Rule" FromRole="Узлы_маневрирования" ToRole="Воздушное_судно" />
+        </EntityType>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="PlaceOfWork" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RolePlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудник_Воздушное_судно_Воздушное_судно">
+          <End Role="Воздушное_судно" Type="Self.Воздушное_судно" Multiplicity="1" />
+          <End Role="Сотрудник_Воздушное_судно" Type="Self.Сотрудник_Воздушное_судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Воздушное_судно">
+              <PropertyRef Name="ID_Воздушного_судна" />
+            </Principal>
+            <Dependent Role="Сотрудник_Воздушное_судно">
+              <PropertyRef Name="ID_Воздушного_судна" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное_судно_Вооружение_FK_Rule">
+          <End Role="Вооружение" Type="Self.Вооружение" Multiplicity="1" />
+          <End Role="Воздушное_судно" Type="Self.Воздушное_судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Вооружение">
+              <PropertyRef Name="ID_вооружения_судна" />
+            </Principal>
+            <Dependent Role="Воздушное_судно">
+              <PropertyRef Name="ID_вооружения_судна" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное_судно_Навигационная_система_FK_Rule">
+          <End Role="Навигационная_система" Type="Self.Навигационная_система" Multiplicity="1" />
+          <End Role="Воздушное_судно" Type="Self.Воздушное_судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Навигационная_система">
+              <PropertyRef Name="ID_навигационной_системы" />
+            </Principal>
+            <Dependent Role="Воздушное_судно">
+              <PropertyRef Name="ID_навигационной_системы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное_судно_Топливная_система_FK_Rule">
+          <End Role="Топливная_система" Type="Self.Топливная_система" Multiplicity="1" />
+          <End Role="Воздушное_судно" Type="Self.Воздушное_судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Топливная_система">
+              <PropertyRef Name="ID_топливной_системы" />
+            </Principal>
+            <Dependent Role="Воздушное_судно">
+              <PropertyRef Name="ID_топливной_системы" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Воздушное_судно_Узлы_маневрирования_FK_Rule">
+          <End Role="Узлы_маневрирования" Type="Self.Узлы_маневрирования" Multiplicity="1" />
+          <End Role="Воздушное_судно" Type="Self.Воздушное_судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Узлы_маневрирования">
+              <PropertyRef Name="ID_узлов_маневрирования" />
+            </Principal>
+            <Dependent Role="Воздушное_судно">
+              <PropertyRef Name="ID_узлов_маневрирования" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Полеты_Воздушное_судно_FK_Rule">
+          <End Role="Воздушное_судно" Type="Self.Воздушное_судно" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Полеты" Type="Self.Полеты" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Воздушное_судно">
+              <PropertyRef Name="ID_Воздушного_судна" />
+            </Principal>
+            <Dependent Role="Полеты">
+              <PropertyRef Name="ID_Воздушного_судна" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Экипировка_Сотрудник_аэродрома">
+          <End Role="Сотрудник_аэродрома" Type="Self.Сотрудник_аэродрома" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Используемая_экипировка" Type="Self.Используемая_экипировка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник_аэродрома">
+              <PropertyRef Name="ID_Сотрудника" />
+            </Principal>
+            <Dependent Role="Используемая_экипировка">
+              <PropertyRef Name="ID_Сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудник_Воздушное_судно_Сотрудник_аэродрома">
+          <End Role="Сотрудник_аэродрома" Type="Self.Сотрудник_аэродрома" Multiplicity="1" />
+          <End Role="Сотрудник_Воздушное_судно" Type="Self.Сотрудник_Воздушное_судно" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник_аэродрома">
+              <PropertyRef Name="ID_Сотрудника" />
+            </Principal>
+            <Dependent Role="Сотрудник_Воздушное_судно">
+              <PropertyRef Name="ID_Сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MilitaryAirfieldEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoginModel" EntityType="Self.LoginModel" />
+          <EntitySet Name="RegisterModel" EntityType="Self.RegisterModel" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Воздушное_судно" EntityType="Self.Воздушное_судно" />
+          <EntitySet Name="Вооружение" EntityType="Self.Вооружение" />
+          <EntitySet Name="Используемая_экипировка" EntityType="Self.Используемая_экипировка" />
+          <EntitySet Name="Навигационная_система" EntityType="Self.Навигационная_система" />
+          <EntitySet Name="Полеты" EntityType="Self.Полеты" />
+          <EntitySet Name="Сотрудник_аэродрома" EntityType="Self.Сотрудник_аэродрома" />
+          <EntitySet Name="Сотрудник_Воздушное_судно" EntityType="Self.Сотрудник_Воздушное_судно" />
+          <EntitySet Name="Топливная_система" EntityType="Self.Топливная_система" />
+          <EntitySet Name="Узлы_маневрирования" EntityType="Self.Узлы_маневрирования" />
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Воздушное_судно_Воздушное_судно" Association="Self.FK_Сотрудник_Воздушное_судно_Воздушное_судно">
+            <End Role="Воздушное_судно" EntitySet="Воздушное_судно" />
+            <End Role="Сотрудник_Воздушное_судно" EntitySet="Сотрудник_Воздушное_судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное_судно_Вооружение_FK_Rule" Association="Self.Воздушное_судно_Вооружение_FK_Rule">
+            <End Role="Вооружение" EntitySet="Вооружение" />
+            <End Role="Воздушное_судно" EntitySet="Воздушное_судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное_судно_Навигационная_система_FK_Rule" Association="Self.Воздушное_судно_Навигационная_система_FK_Rule">
+            <End Role="Навигационная_система" EntitySet="Навигационная_система" />
+            <End Role="Воздушное_судно" EntitySet="Воздушное_судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное_судно_Топливная_система_FK_Rule" Association="Self.Воздушное_судно_Топливная_система_FK_Rule">
+            <End Role="Топливная_система" EntitySet="Топливная_система" />
+            <End Role="Воздушное_судно" EntitySet="Воздушное_судно" />
+          </AssociationSet>
+          <AssociationSet Name="Воздушное_судно_Узлы_маневрирования_FK_Rule" Association="Self.Воздушное_судно_Узлы_маневрирования_FK_Rule">
+            <End Role="Узлы_маневрирования" EntitySet="Узлы_маневрирования" />
+            <End Role="Воздушное_судно" EntitySet="Воздушное_судно" />
+          </AssociationSet>
+          <AssociationSet Name="Полеты_Воздушное_судно_FK_Rule" Association="Self.Полеты_Воздушное_судно_FK_Rule">
+            <End Role="Воздушное_судно" EntitySet="Воздушное_судно" />
+            <End Role="Полеты" EntitySet="Полеты" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Экипировка_Сотрудник_аэродрома" Association="Self.FK_Экипировка_Сотрудник_аэродрома">
+            <End Role="Сотрудник_аэродрома" EntitySet="Сотрудник_аэродрома" />
+            <End Role="Используемая_экипировка" EntitySet="Используемая_экипировка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудник_Воздушное_судно_Сотрудник_аэродрома" Association="Self.FK_Сотрудник_Воздушное_судно_Сотрудник_аэродрома">
+            <End Role="Сотрудник_аэродрома" EntitySet="Сотрудник_аэродрома" />
+            <End Role="Сотрудник_Воздушное_судно" EntitySet="Сотрудник_Воздушное_судно" />
+          </AssociationSet>
+          <FunctionImport Name="nagruzka" IsComposable="true" ReturnType="Collection(MilitaryAirfieldModel.nagruzka_Result)" />
+          <FunctionImport Name="strelok" IsComposable="true" ReturnType="Collection(MilitaryAirfieldModel.strelok_Result)" />
+          <FunctionImport Name="dobavlenie">
+            <Parameter Name="kol_vo" Mode="In" Type="Int32" />
+            <Parameter Name="mesto_pribitiya" Mode="In" Type="String" />
+            <Parameter Name="mesto_vileta" Mode="In" Type="String" />
+            <Parameter Name="time_vileta" Mode="In" Type="DateTime" />
+            <Parameter Name="boevoj_vilet" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MilitaryAirfieldModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MilitaryAirfieldModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="udalenie" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MilitaryAirfieldModelContainer" CdmEntityContainer="MilitaryAirfieldEntities4">
+          <EntitySetMapping Name="LoginModel">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.LoginModel">
+              <MappingFragment StoreEntitySet="LoginModel">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterModel">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.RegisterModel">
+              <MappingFragment StoreEntitySet="RegisterModel">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RolePlace" ColumnName="RolePlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Воздушное_судно">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Воздушное_судно">
+              <MappingFragment StoreEntitySet="Воздушное судно">
+                <ScalarProperty Name="ID_Воздушного_судна" ColumnName="ID Воздушного судна" />
+                <ScalarProperty Name="Регистрационный_номер_судна" ColumnName="Регистрационный номер судна" />
+                <ScalarProperty Name="Тип_воздушного_судна" ColumnName="Тип воздушного судна" />
+                <ScalarProperty Name="Название_воздушного_судна" ColumnName="Название воздушного судна" />
+                <ScalarProperty Name="Год_создания" ColumnName="Год создания" />
+                <ScalarProperty Name="Год_начала_эксплуатации" ColumnName="Год начала эксплуатации" />
+                <ScalarProperty Name="Работоспособность" ColumnName="Работоспособность" />
+                <ScalarProperty Name="Грузоподъемность_в_кг_" ColumnName="Грузоподъемность(в кг)" />
+                <ScalarProperty Name="Максимальная_скорость_в_км_ч_" ColumnName="Максимальная скорость(в км\ч)" />
+                <ScalarProperty Name="Длина_в_м_" ColumnName="Длина(в м)" />
+                <ScalarProperty Name="Мощность_или_тяга_двигателя" ColumnName="Мощность или тяга двигателя" />
+                <ScalarProperty Name="Дальность_полёта_в_км_" ColumnName="Дальность полёта(в км)" />
+                <ScalarProperty Name="ID_навигационной_системы" ColumnName="ID навигационной системы" />
+                <ScalarProperty Name="ID_топливной_системы" ColumnName="ID топливной системы" />
+                <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+                <ScalarProperty Name="ID_узлов_маневрирования" ColumnName="ID узлов маневрирования" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Вооружение">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Вооружение">
+              <MappingFragment StoreEntitySet="Вооружение">
+                <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+                <ScalarProperty Name="Используемые_ракеты" ColumnName="Используемые ракеты" />
+                <ScalarProperty Name="Боевая_нагрузка_в_кг_" ColumnName="Боевая нагрузка(в кг)" />
+                <ScalarProperty Name="Количество_точек_подвески" ColumnName="Количество точек подвески" />
+                <ScalarProperty Name="Наличие_бомб" ColumnName="Наличие бомб" />
+                <ScalarProperty Name="Стрелково_пушечное_вооружение" ColumnName="Стрелково-пушечное вооружение" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Используемая_экипировка">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Используемая_экипировка">
+              <MappingFragment StoreEntitySet="Используемая экипировка">
+                <ScalarProperty Name="ID_экипировки" ColumnName="ID экипировки" />
+                <ScalarProperty Name="ID_Сотрудника" ColumnName="ID Сотрудника" />
+                <ScalarProperty Name="Защитный_костюм" ColumnName="Защитный костюм" />
+                <ScalarProperty Name="Наличие_авиационного_спасательного_пояса" ColumnName="Наличие авиационного спасательного пояса" />
+                <ScalarProperty Name="Наплечные_знаки_различия_или_погоны" ColumnName="Наплечные знаки различия или погоны" />
+                <ScalarProperty Name="Тип_экипировки" ColumnName="Тип экипировки" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Навигационная_система">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Навигационная_система">
+              <MappingFragment StoreEntitySet="Навигационная система">
+                <ScalarProperty Name="ID_навигационной_системы" ColumnName="ID навигационной системы" />
+                <ScalarProperty Name="Средняя_дальность_обнаружения_воздушной_цели" ColumnName="Средняя дальность обнаружения воздушной цели" />
+                <ScalarProperty Name="Количество_одновременно_сопровождаемых_целей" ColumnName="Количество одновременно сопровождаемых целей" />
+                <ScalarProperty Name="Количество_одновременно_атакуемых_целей" ColumnName="Количество одновременно атакуемых целей" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Полеты">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Полеты">
+              <MappingFragment StoreEntitySet="Полеты">
+                <ScalarProperty Name="Номер_рейса" ColumnName="Номер рейса" />
+                <ScalarProperty Name="Место_вылета" ColumnName="Место вылета" />
+                <ScalarProperty Name="Дата_и_время_вылета" ColumnName="Дата и время вылета" />
+                <ScalarProperty Name="Место_прибытия" ColumnName="Место прибытия" />
+                <ScalarProperty Name="Дата_и_время_прилета" ColumnName="Дата и время прилета" />
+                <ScalarProperty Name="Номер_взлетной_полосы" ColumnName="Номер взлетной полосы" />
+                <ScalarProperty Name="Расстояние_в_км_" ColumnName="Расстояние(в км)" />
+                <ScalarProperty Name="ID_Воздушного_судна" ColumnName="ID Воздушного судна" />
+                <ScalarProperty Name="Боевой_полет" ColumnName="Боевой полет" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудник_аэродрома">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Сотрудник_аэродрома">
+              <MappingFragment StoreEntitySet="Сотрудник аэродрома">
+                <ScalarProperty Name="ID_Сотрудника" ColumnName="ID Сотрудника" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Военное_звание" ColumnName="Военное звание" />
+                <ScalarProperty Name="Должность" ColumnName="Должность" />
+                <ScalarProperty Name="Место_работы" ColumnName="Место работы" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудник_Воздушное_судно">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Сотрудник_Воздушное_судно">
+              <MappingFragment StoreEntitySet="Сотрудник_Воздушное судно">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Сотрудника" ColumnName="ID Сотрудника" />
+                <ScalarProperty Name="ID_Воздушного_судна" ColumnName="ID Воздушного судна" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Топливная_система">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Топливная_система">
+              <MappingFragment StoreEntitySet="Топливная система">
+                <ScalarProperty Name="ID_топливной_системы" ColumnName="ID топливной системы" />
+                <ScalarProperty Name="Масса_топлива_в_кг_" ColumnName="Масса топлива(в кг)" />
+                <ScalarProperty Name="Вид_топлива" ColumnName="Вид топлива" />
+                <ScalarProperty Name="Способ_заправки" ColumnName="Способ заправки" />
+                <ScalarProperty Name="Количество_баков" ColumnName="Количество баков" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Узлы_маневрирования">
+            <EntityTypeMapping TypeName="MilitaryAirfieldModel.Узлы_маневрирования">
+              <MappingFragment StoreEntitySet="Узлы маневрирования">
+                <ScalarProperty Name="ID_узлов_маневрирования" ColumnName="ID узлов маневрирования" />
+                <ScalarProperty Name="Размах_крыла_в_м_" ColumnName="Размах крыла(в м)" />
+                <ScalarProperty Name="Наличие_закрылок" ColumnName="Наличие закрылок" />
+                <ScalarProperty Name="Угол_стреловидности" ColumnName="Угол стреловидности" />
+                <ScalarProperty Name="Скороподъемность_в_м_с_" ColumnName="Скороподъемность(в м\с)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="Хранилище MilitaryAirfieldModel.nagruzka" FunctionImportName="nagruzka">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MilitaryAirfieldModel.nagruzka_Result">
+                <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+                <ScalarProperty Name="Используемые_ракеты" ColumnName="Используемые ракеты" />
+                <ScalarProperty Name="Боевая_нагрузка_в_кг_" ColumnName="Боевая нагрузка(в кг)" />
+                <ScalarProperty Name="Количество_точек_подвески" ColumnName="Количество точек подвески" />
+                <ScalarProperty Name="Наличие_бомб" ColumnName="Наличие бомб" />
+                <ScalarProperty Name="Стрелково_пушечное_вооружение" ColumnName="Стрелково-пушечное вооружение" />
+                <ScalarProperty Name="Общая_боевая_нагрузка" ColumnName="Общая боевая нагрузка" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище MilitaryAirfieldModel.strelok" FunctionImportName="strelok">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MilitaryAirfieldModel.strelok_Result">
+                <ScalarProperty Name="ID_вооружения_судна" ColumnName="ID вооружения судна" />
+                <ScalarProperty Name="Используемые_ракеты" ColumnName="Используемые ракеты" />
+                <ScalarProperty Name="Боевая_нагрузка_в_кг_" ColumnName="Боевая нагрузка(в кг)" />
+                <ScalarProperty Name="Количество_точек_подвески" ColumnName="Количество точек подвески" />
+                <ScalarProperty Name="Наличие_бомб" ColumnName="Наличие бомб" />
+                <ScalarProperty Name="Стрелково_пушечное_вооружение" ColumnName="Стрелково-пушечное вооружение" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="dobavlenie" FunctionName="Хранилище MilitaryAirfieldModel.dobavlenie" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище MilitaryAirfieldModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MilitaryAirfieldModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище MilitaryAirfieldModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MilitaryAirfieldModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище MilitaryAirfieldModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище MilitaryAirfieldModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="udalenie" FunctionName="Хранилище MilitaryAirfieldModel.udalenie" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

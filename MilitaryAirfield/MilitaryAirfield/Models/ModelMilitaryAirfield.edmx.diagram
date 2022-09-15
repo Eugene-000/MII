@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="45799b6ea8e34b288bd1c6e9d44d73e3" Name="Diagram1">
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.LoginModel" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.RegisterModel" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Role" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.User" Width="1.5" PointX="13" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Воздушное_судно" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Вооружение" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Используемая_экипировка" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Навигационная_система" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Полеты" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Сотрудник_аэродрома" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Сотрудник_Воздушное_судно" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Топливная_система" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MilitaryAirfieldModel.Узлы_маневрирования" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="MilitaryAirfieldModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.FK_Сотрудник_Воздушное_судно_Воздушное_судно" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.Воздушное_судно_Вооружение_FK_Rule" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.Воздушное_судно_Навигационная_система_FK_Rule" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.Воздушное_судно_Топливная_система_FK_Rule" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.Воздушное_судно_Узлы_маневрирования_FK_Rule" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.Полеты_Воздушное_судно_FK_Rule" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.FK_Экипировка_Сотрудник_аэродрома" ManuallyRouted="false" />
+        <AssociationConnector Association="MilitaryAirfieldModel.FK_Сотрудник_Воздушное_судно_Сотрудник_аэродрома" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

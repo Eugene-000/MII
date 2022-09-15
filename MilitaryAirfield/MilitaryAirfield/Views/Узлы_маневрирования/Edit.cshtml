@@ -1,0 +1,73 @@
+﻿@model MilitaryAirfield.Models.Узлы_маневрирования
+
+@{
+    ViewBag.Title = "Редактирование записи";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ"
+                                     && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Работник ангара")
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+<h2>Редактирование записи:</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Узлы маневрирования</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_узлов_маневрирования)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Размах_крыла_в_м_, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Размах_крыла_в_м_, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Размах_крыла_в_м_, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Наличие_закрылок, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Наличие_закрылок)
+                    @Html.ValidationMessageFor(model => model.Наличие_закрылок, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Угол_стреловидности, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Угол_стреловидности, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Угол_стреловидности, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Скороподъемность_в_м_с_, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Скороподъемность_в_м_с_, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Скороподъемность_в_м_с_, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Вернуться назад", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

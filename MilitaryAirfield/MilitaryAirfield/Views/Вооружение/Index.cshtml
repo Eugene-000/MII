@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Вооружение>
+
+@{
+    ViewBag.Title = "Таблица Вооружение";
+}
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) == null)
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+<h2>Таблица "Вооружение"</h2>
+
+<br>
+
+@using (@Html.BeginForm())
+{
+    @Html.Label("Расчитать общую боевую нагрузку по типу воздушного судна:")
+    <br>
+    @Html.Label("Введите в поле тип воздушного судна")
+    <p>@Html.TextBox("boyevay_nagruzka")</p>
+    <input id="submit" type="submit" value="ОК" name="submit" />
+    <h3>@ViewBag.Nagruzka</h3>
+
+
+}
+<br>
+
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Используемые_ракеты)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Боевая_нагрузка_в_кг_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Количество_точек_подвески)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наличие_бомб)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Стрелково_пушечное_вооружение)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Используемые_ракеты)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Боевая_нагрузка_в_кг_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Количество_точек_подвески)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наличие_бомб)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Стрелково_пушечное_вооружение)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_вооружения_судна }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID_вооружения_судна }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_вооружения_судна })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")
+</p>

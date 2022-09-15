@@ -1,0 +1,162 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Воздушное_судно>
+
+@{
+    ViewBag.Title = "Воздушное судно";
+}
+
+@{ if ( Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"])==null)
+    {
+<h5>Нет прав доступа!</h5>
+        } }
+<h2>Таблица "Воздушное судно"</h2>
+
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Дальность полета(в км): </label>
+        @Html.DropDownList("RangeOfFlight", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано",Value="null", Selected=true},
+                new SelectListItem() {Text="1-1000",      Value="1"},
+                new SelectListItem() {Text="1001-2000",     Value="1001"},
+                new SelectListItem() {Text="2001-3000",     Value="2001"},
+                new SelectListItem() {Text="3001-4000",     Value="3001"},
+                new SelectListItem() {Text="4001-5000",     Value="4001"},
+                new SelectListItem() {Text="5001-6000",     Value="5001"},
+                new SelectListItem() {Text="6001-7000",     Value="6001"},
+                new SelectListItem() {Text="7001-8000",     Value="7001"},
+                new SelectListItem() {Text="8001+",       Value="8001"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" name="Filter1" value="Фильтр" class="btn btn-default" />
+    </div>
+    <br />
+
+    <div class="form-inline">
+        <label class="control-label">Тип воздушного судна: </label>
+        @Html.DropDownList("AircraftType", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано",Value="null"},
+                new SelectListItem() {Text="Истребитель",  Value="Истребитель"},
+                new SelectListItem() {Text="Вертолёт",      Value="Вертолёт"},
+                new SelectListItem() {Text="Бомбардировщик", Value="Бомбардировщик"},
+                new SelectListItem() {Text="Штурмовик",  Value="Штурмовик"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" name="Filter2" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<br />
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Регистрационный_номер_судна)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Тип_воздушного_судна)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Название_воздушного_судна)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Год_создания)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Год_начала_эксплуатации)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Работоспособность)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Грузоподъемность_в_кг_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Максимальная_скорость_в_км_ч_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Длина_в_м_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Мощность_или_тяга_двигателя)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дальность_полёта_в_км_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Вооружение.Используемые_ракеты)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Навигационная_система.ID_навигационной_системы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Топливная_система.ID_топливной_системы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Узлы_маневрирования.ID_узлов_маневрирования)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Регистрационный_номер_судна)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Тип_воздушного_судна)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Название_воздушного_судна)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Год_создания)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Год_начала_эксплуатации)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Работоспособность)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Грузоподъемность_в_кг_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Максимальная_скорость_в_км_ч_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Длина_в_м_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Мощность_или_тяга_двигателя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дальность_полёта_в_км_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Вооружение.Используемые_ракеты)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Навигационная_система.ID_навигационной_системы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Топливная_система.ID_топливной_системы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Узлы_маневрирования.ID_узлов_маневрирования)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_Воздушного_судна }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID_Воздушного_судна }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_Воздушного_судна })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles","Home")
+</p>

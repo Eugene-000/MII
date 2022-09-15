@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Узлы_маневрирования>
+
+@{
+    ViewBag.Title = "Таблица Узлы маневрирования";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) == null)
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+
+<h2>Таблица "Узлы маневрирования"</h2>
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Размах_крыла_в_м_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наличие_закрылок)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Угол_стреловидности)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Скороподъемность_в_м_с_)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Размах_крыла_в_м_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наличие_закрылок)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Угол_стреловидности)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Скороподъемность_в_м_с_)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_узлов_маневрирования }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID_узлов_маневрирования }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_узлов_маневрирования })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")
+</p>

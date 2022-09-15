@@ -1,0 +1,52 @@
+﻿@model MilitaryAirfield.Models.Навигационная_система
+
+@{
+    ViewBag.Title = "Удаление записи";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ")
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+<h2>Удаление записи:</h2>
+
+<div>
+    <h4>Навигационная система</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Средняя_дальность_обнаружения_воздушной_цели)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Средняя_дальность_обнаружения_воздушной_цели)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество_одновременно_сопровождаемых_целей)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество_одновременно_сопровождаемых_целей)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество_одновременно_атакуемых_целей)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество_одновременно_атакуемых_целей)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться назад", "Index")
+        </div>
+    }
+</div>

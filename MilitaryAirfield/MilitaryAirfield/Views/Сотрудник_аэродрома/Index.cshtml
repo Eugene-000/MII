@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Сотрудник_аэродрома>
+
+@{
+    ViewBag.Title = "Таблица Сотрудник аэродрома";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) == null)
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+
+<h2>Таблица "Сотрудник аэродрома"</h2>
+
+<br>
+@using (@Html.BeginForm())
+{
+    @Html.Label("Поиск по фамилии:")
+    <p>@Html.TextBox("LastName")</p>
+    <input id="submit" type="submit" value="Найти" name="submit" /><br />
+
+}
+<br>
+<br>
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Фамилия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Имя)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Отчество)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Пол)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_рождения)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Телефон)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Военное_звание)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Должность)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Место_работы)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Фамилия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Имя)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Отчество)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Пол)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_рождения)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Телефон)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Военное_звание)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Должность)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Место_работы)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_Сотрудника }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID_Сотрудника }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_Сотрудника })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")
+</p>

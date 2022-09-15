@@ -1,0 +1,39 @@
+﻿@model MilitaryAirfield.Models.Сотрудник_Воздушное_судно
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ")
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+
+<h2>Подробнее:</h2>
+
+<div>
+    <h4>Связь сотрудника и воздушного судна</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Воздушное_судно.Регистрационный_номер_судна)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Воздушное_судно.Регистрационный_номер_судна)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сотрудник_аэродрома.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сотрудник_аэродрома.Фамилия)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Вернуться назад", "Index")
+</p>

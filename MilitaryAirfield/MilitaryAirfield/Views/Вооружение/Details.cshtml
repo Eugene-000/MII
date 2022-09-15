@@ -1,0 +1,63 @@
+﻿@model MilitaryAirfield.Models.Вооружение
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ"
+                                  && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Работник ангара")
+    {
+<h5>Нет прав доступа!</h5>
+        } }
+<h2>Подробнее:</h2>
+
+<div>
+    <h4>Вооружение</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Используемые_ракеты)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Используемые_ракеты)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Боевая_нагрузка_в_кг_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Боевая_нагрузка_в_кг_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество_точек_подвески)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество_точек_подвески)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_бомб)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_бомб)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Стрелково_пушечное_вооружение)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Стрелково_пушечное_вооружение)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID_вооружения_судна }) |
+    @Html.ActionLink("Вернуться назад", "Index")
+</p>

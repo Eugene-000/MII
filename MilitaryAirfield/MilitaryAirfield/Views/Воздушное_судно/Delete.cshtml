@@ -1,0 +1,147 @@
+﻿@model MilitaryAirfield.Models.Воздушное_судно
+
+@{
+    ViewBag.Title = "Удаление записи";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ")
+    {
+<h5>Нет прав доступа!</h5>
+        } }
+<h2>Удаление записи:</h2>
+
+<div>
+    <h4>Воздушное судно</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Регистрационный_номер_судна)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Регистрационный_номер_судна)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Тип_воздушного_судна)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тип_воздушного_судна)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Название_воздушного_судна)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Название_воздушного_судна)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Год_создания)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Год_создания)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Год_начала_эксплуатации)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Год_начала_эксплуатации)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Работоспособность)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Работоспособность)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Грузоподъемность_в_кг_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Грузоподъемность_в_кг_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Максимальная_скорость_в_км_ч_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Максимальная_скорость_в_км_ч_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Длина_в_м_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Длина_в_м_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Мощность_или_тяга_двигателя)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Мощность_или_тяга_двигателя)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дальность_полёта_в_км_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дальность_полёта_в_км_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Вооружение.Используемые_ракеты)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вооружение.Используемые_ракеты)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Навигационная_система.ID_навигационной_системы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Навигационная_система.ID_навигационной_системы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Топливная_система.Вид_топлива)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Топливная_система.Вид_топлива)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Узлы_маневрирования.ID_узлов_маневрирования)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Узлы_маневрирования.ID_узлов_маневрирования)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться назад", "Index")
+        </div>
+    }
+</div>

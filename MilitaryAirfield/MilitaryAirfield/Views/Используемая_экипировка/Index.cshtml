@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Используемая_экипировка>
+
+@{
+    ViewBag.Title = "Таблица Используемая экипировка";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) == null)
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+<h2>Таблица "Используемая экипировка"</h2>
+
+<br>
+@using (@Html.BeginForm())
+{
+    @Html.Label("Поиск по типу экипировки:")
+    <p>@Html.TextBox("tip")</p>
+    <input id="submit" type="submit" value="Найти" name="submit" /><br />
+
+}
+<br>
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Защитный_костюм)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наличие_авиационного_спасательного_пояса)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Наплечные_знаки_различия_или_погоны)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Тип_экипировки)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Сотрудник_аэродрома.Фамилия)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Защитный_костюм)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наличие_авиационного_спасательного_пояса)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Наплечные_знаки_различия_или_погоны)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Тип_экипировки)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сотрудник_аэродрома.Фамилия)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_экипировки }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID_экипировки }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_экипировки })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")
+</p>

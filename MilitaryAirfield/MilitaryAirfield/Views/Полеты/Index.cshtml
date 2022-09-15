@@ -1,0 +1,151 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Полеты>
+
+@{
+    ViewBag.Title = "Таблица Полеты";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ"
+                   && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Работник командно-диспетчерский пункта"
+                   && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Сотрудник работающий на воздушном судне")
+    {<h5>Нет прав доступа!</h5> } }
+
+<h2>Таблица "Полеты"</h2>
+
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Место вылета: </label>
+        @Html.DropDownList("PlaceOfDeparture", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано",Value="null"},
+                new SelectListItem() {Text="Россия(Ульяновск)",  Value="Россия(Ульяновск)"},
+                new SelectListItem() {Text="США(Вашингтон)",      Value="США(Вашингтон)"},
+                new SelectListItem() {Text="Турция(Анкара)", Value="Турция(Анкара)"},
+                new SelectListItem() {Text="Россия(Екатеринбург)",  Value="Россия(Екатеринбург)"},
+                new SelectListItem() {Text="Россия(Москва)",  Value="Россия(Москва)"},
+                new SelectListItem() {Text="Китай(Пекин)",  Value="Китай(Пекин)"},
+                new SelectListItem() {Text="Украина(Донецк)",  Value="Украина(Донецк)"},
+                new SelectListItem() {Text="Сирия(Дамаск)",  Value="Сирия(Дамаск)"},
+                new SelectListItem() {Text="Финляндия(Хельсинки)",Value="Финляндия(Хельсинки)"}
+    },
+
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" name="Filter1" value="Фильтр" class="btn btn-default" />
+    </div>
+    <br />
+
+    <div class="form-inline">
+        <label class="control-label">Место прибытия: </label>
+        @Html.DropDownList("PlaceOfArrival", new List<SelectListItem>
+    {
+                new SelectListItem() {Text="Не выбрано",Value="null"},
+                new SelectListItem() {Text="Россия(Ульяновск)",  Value="Россия(Ульяновск)"},
+                new SelectListItem() {Text="США(Вашингтон)",      Value="США(Вашингтон)"},
+                new SelectListItem() {Text="Турция(Анкара)", Value="Турция(Анкара)"},
+                new SelectListItem() {Text="Россия(Екатеринбург)",  Value="Россия(Екатеринбург)"},
+                new SelectListItem() {Text="Россия(Москва)",  Value="Россия(Москва)"},
+                new SelectListItem() {Text="Китай(Пекин)",  Value="Китай(Пекин)"},
+                new SelectListItem() {Text="Украина(Донецк)",  Value="Украина(Донецк)"},
+                new SelectListItem() {Text="Сирия(Дамаск)",  Value="Сирия(Дамаск)"},
+                new SelectListItem() {Text="Финляндия(Хельсинки)",Value="Финляндия(Хельсинки)"}
+    },
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" name="Filter2" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<br />
+@using (@Html.BeginForm())
+{
+    @Html.Label("Процедура добавления записи полетов: добавляет запись, если нужных для вылета в определенное время и место самолетов не достаточно")
+
+    <br>
+    @Html.Label("Добавьте количество требуемых самолётов:")
+    <p>@Html.TextBox("kol_vo")</p>
+
+    @Html.Label("Добавьте место прибытия:")
+    <p>@Html.TextBox("mesto_pribitiya")</p>
+
+    @Html.Label("Добавьте место вылета:")
+    <p>@Html.TextBox("mesto_vileta")</p>
+
+    @Html.Label("Добавьте время вылета:")
+    <p>@Html.TextBox("time_vileta")</p>
+
+    @Html.Label("Боевой ли полёт?")
+    <p>@Html.TextBox("boevoj_vilet")</p>
+    <input id="submit" type="submit" value="ОК" name="submit" />
+
+}
+<br>
+<br>
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Место_вылета)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_и_время_вылета)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Место_прибытия)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Дата_и_время_прилета)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Номер_взлетной_полосы)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Расстояние_в_км_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Боевой_полет)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Воздушное_судно.Регистрационный_номер_судна)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Место_вылета)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_и_время_вылета)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Место_прибытия)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Дата_и_время_прилета)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Номер_взлетной_полосы)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Расстояние_в_км_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Боевой_полет)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Воздушное_судно.Регистрационный_номер_судна)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Номер_рейса }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.Номер_рейса }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Номер_рейса })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")
+</p>

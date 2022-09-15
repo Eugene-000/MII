@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MilitaryAirfield.Models.Топливная_система>
+
+@{
+    ViewBag.Title = "Таблица Топливная система";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) == null)
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+
+<h2>Таблица "Топливная система"</h2>
+
+<br>
+
+@using (@Html.BeginForm())
+{
+    @Html.Label("Расчитать объём топливных баков воздушного судна по id топливной системы:")
+    <br>
+    @Html.Label("Введите в поле id топливной системы")
+    <p>@Html.TextBox("id_sistemi")</p>
+    <input id="submit" type="submit" value="ОК" name="submit" />
+    <h3>@ViewBag.Volume</h3>
+
+
+}
+<br>
+
+<p>
+    @Html.ActionLink("Добавить запись", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Масса_топлива_в_кг_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Вид_топлива)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Способ_заправки)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Количество_баков)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Масса_топлива_в_кг_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Вид_топлива)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Способ_заправки)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Количество_баков)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_топливной_системы }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID_топливной_системы }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_топливной_системы })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")
+</p>

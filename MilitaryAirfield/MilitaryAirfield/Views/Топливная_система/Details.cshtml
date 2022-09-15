@@ -1,0 +1,55 @@
+﻿@model MilitaryAirfield.Models.Топливная_система
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ"
+                                    && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Работник ангара")
+    {
+        <h5>Нет прав доступа!</h5>
+    } }
+<h2>Подробнее:</h2>
+
+<div>
+    <h4>Топливная система</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Масса_топлива_в_кг_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Масса_топлива_в_кг_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Вид_топлива)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Вид_топлива)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Способ_заправки)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Способ_заправки)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Количество_баков)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Количество_баков)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID_топливной_системы }) |
+    @Html.ActionLink("Вернуться назад", "Index")
+</p>

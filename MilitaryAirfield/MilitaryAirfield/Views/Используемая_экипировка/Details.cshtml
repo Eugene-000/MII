@@ -1,0 +1,62 @@
+﻿@model MilitaryAirfield.Models.Используемая_экипировка
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ")
+    {
+<h5>Нет прав доступа!</h5>
+        } }
+<h2>Подробнее:</h2>
+
+<div>
+    <h4>Используемая экипировка</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Защитный_костюм)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Защитный_костюм)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наличие_авиационного_спасательного_пояса)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наличие_авиационного_спасательного_пояса)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Наплечные_знаки_различия_или_погоны)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Наплечные_знаки_различия_или_погоны)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Тип_экипировки)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Тип_экипировки)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Сотрудник_аэродрома.Фамилия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Сотрудник_аэродрома.Фамилия)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID_экипировки }) |
+    @Html.ActionLink("Вернуться назад", "Index")
+</p>

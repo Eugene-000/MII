@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Информация о пользователе";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Result</h3>
+@{if (@ViewBag.Result != "Вы не аутентифицированы")
+    { 
+<h4>@Html.ActionLink("Вернуться к списку таблиц", "Roles", "Home")</h4>
+}}

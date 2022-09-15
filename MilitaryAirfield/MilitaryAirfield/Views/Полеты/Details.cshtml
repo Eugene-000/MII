@@ -1,0 +1,85 @@
+﻿@model MilitaryAirfield.Models.Полеты
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+@{ if (Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Админ"
+                   && Server.UrlDecode(Request.Cookies["My localhost cookies"]["Role"]) != "Работник командно-диспетчерский пункта")
+    {<h5>Нет прав доступа!</h5> } }
+<h2>Подробнее:</h2>
+
+<div>
+    <h4>Полеты</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Место_вылета)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Место_вылета)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_и_время_вылета)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_и_время_вылета)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Место_прибытия)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Место_прибытия)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Дата_и_время_прилета)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Дата_и_время_прилета)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Номер_взлетной_полосы)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Номер_взлетной_полосы)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Расстояние_в_км_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Расстояние_в_км_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Боевой_полет)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Боевой_полет)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Воздушное_судно.Регистрационный_номер_судна)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Воздушное_судно.Регистрационный_номер_судна)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Номер_рейса }) |
+    @Html.ActionLink("Вернуться назад", "Index")
+</p>

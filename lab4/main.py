@@ -69,13 +69,13 @@ def minkowski_distance(a, b, p=1):
     return distance
 
 
-def knn_predict(X_train, X_test, y_train, y_test, count_classes, k, p):
+def knn_predict(x_train, x_test, y_train, y_test, count_classes, k, p):
     y_hat_test = []
 
-    for test_point in X_test:
+    for test_point in x_test:
         distances = []
 
-        for train_point in X_train:
+        for train_point in x_train:
             distance = minkowski_distance(test_point, train_point, p=p)
             distances.append(distance)
 
@@ -86,26 +86,41 @@ def knn_predict(X_train, X_test, y_train, y_test, count_classes, k, p):
         y_hat_test.append(prediction)
 
     accuracy = accuracy_score(y_test, y_hat_test)
-    print(f"\nТочность метрического классификатора c {count_classes} классами: {accuracy}, при тестовой выборке 20% от всех данных и k = 3")
+    print(f"\nТочность метрического классификатора c {count_classes} классами: {accuracy}, при тестовой выборке 20% "
+          f"от всех данных и k = 3")
     return y_hat_test
 
 
-def knn_sklearn(X_train, X_test, y_train, y_test, count_classes, k, p):
-    clf = KNeighborsClassifier(n_neighbors=3, p=1)
-    clf.fit(X_train, y_train)
-    y_pred_test = clf.predict(X_test)
+def knn_sklearn(x_train, x_test, y_train, y_test, count_classes, k, p):
+    clf = KNeighborsClassifier(n_neighbors=k, p=p)
+    clf.fit(x_train, y_train)
+    y_pred_test = clf.predict(x_test)
     accuracy = accuracy_score(y_test, y_pred_test)
-    print(f"\nТочность классификатора sklearn c {count_classes} классами: {accuracy}, при тестовой выборке 20% от всех данных и k = 3")
+    print(f"\nТочность классификатора sklearn c {count_classes} классами: {accuracy}, при тестовой выборке 20% от "
+          f"всех данных и k = 3")
+    return y_pred_test
 
 
-def visualization(x_test, X_test, count_classes):
+def visualization(dataset, classifier):
+    x = dataset.drop('класс', axis=1)
+    x = dataset.drop('продукт', axis=1)
+    y = dataset['класс']
+
+    count_classes = len(Counter(y).keys())
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20)
+    scaler = StandardScaler()
+    train_x = scaler.fit_transform(x_train)
+    test_x = scaler.transform(x_test)
+
+    classifier_predict = classifier(train_x, test_x, y_train, y_test, count_classes, k=3, p=1)
+
     fig, ax = pl.subplots(figsize=(6.5, 5))
 
-    scatter = ax.scatter(x_test['сладость'][:], x_test['хруст'][:], c=x_test['класс'][:],
+    scatter = ax.scatter(x_train['сладость'][:], x_train['хруст'][:], c=x_train['класс'][:],
                          marker="o",
                          alpha=0.5)
 
-    ax.scatter(X_test['сладость'][:], X_test['хруст'][:], c=X_test['класс'][:],
+    ax.scatter(x_test['сладость'][:], x_test['хруст'][:], c=classifier_predict,
                marker="x",
                alpha=0.5)
 
@@ -123,31 +138,22 @@ def visualization(x_test, X_test, count_classes):
     plt.show()
 
 
-def preparation_datasets(file, data, fields):
+def preparation_datasets(file, data, fields_name):
     with open(file, 'w', newline='', encoding='utf-16') as w_f:
         writer = csv.writer(w_f)
-        writer.writerow(fields)
+        writer.writerow(fields_name)
         writer.writerows(data)
 
     dataset = pd.read_csv(file, encoding='utf-16')
-    X = dataset.drop('класс', axis=1)
-    X = dataset.drop('продукт', axis=1)
-    y = dataset['класс']
 
-    count_classes = len(Counter(y).keys())
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-
-    visualization(X_train, X_test, count_classes)
-
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
-
-    knn_predict(X_train, X_test, y_train, y_test, count_classes, k=3, p=1)
-    knn_sklearn(X_train, X_test, y_train, y_test, count_classes, k=3, p=1)
+    return dataset
 
 
-preparation_datasets('dataset1.csv', data1, fields)
-preparation_datasets('dataset2.csv', data2, fields)
+dataset1 = preparation_datasets('dataset1.csv', data1, fields)
+dataset2 = preparation_datasets('dataset2.csv', data2, fields)
 
+visualization(dataset1, knn_predict)
+visualization(dataset1, knn_sklearn)
+
+visualization(dataset2, knn_predict)
+visualization(dataset2, knn_sklearn)
